@@ -33,7 +33,26 @@ class App extends Component {
       box: {},
       route: 'signin',
       isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+      }
     }
+  }
+
+  loadUser = (data) => {
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        entries: data.entries,
+        joined: data.joined
+      }
+    })
   }
 
   calculateFaceLocation = (data) => {
@@ -67,7 +86,7 @@ class App extends Component {
   }
 
   onRouteChange = (route) => {
-    if (route === 'signout') {
+    if (route === 'signin') {
       this.setState({ isSignedIn: false })
     } else if (route === 'home') {
       this.setState({ isSignedIn: true })
@@ -85,7 +104,7 @@ class App extends Component {
         {route === 'home'
           ? <div>
             <Logo />
-            <Rank />
+            <Rank name={this.state.user.name} entries={this.state.user.entries} />
             <ImagelinkForm
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
@@ -94,8 +113,8 @@ class App extends Component {
           </div>
           : (
             route === 'signin' ?
-              <Signin onRouteChange={this.onRouteChange} /> :
-              <Register onRouteChange={this.onRouteChange} />
+              <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} /> :
+              <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
           )
 
         }
