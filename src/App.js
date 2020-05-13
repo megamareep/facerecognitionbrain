@@ -9,10 +9,6 @@ import './App.css';
 import Signin from './components/Signin/Signin.js'
 import Register from './components/Register/Register.js'
 
-
-
-const httpEndPoint = 'https://protected-escarpment-54369.herokuapp.com/'
-
 const particlesOptions = {
   particles: {
     number: {
@@ -93,7 +89,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input })
-    fetch(httpEndPoint + 'imageurl', {
+    fetch(`https://protected-escarpment-54369.herokuapp.com/`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -103,7 +99,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch(httpEndPoint + 'image', {
+          fetch(`https://protected-escarpment-54369.herokuapp.com/`, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
