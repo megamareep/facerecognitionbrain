@@ -156,20 +156,4 @@ class App extends Component {
   }
 }
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <Particles className='particles'
-//       params={particlesOptions}/>
-//       <Navigation />
-//       <Logo />
-//       <Rank />
-//       <ImagelinkForm />
-//       {/*
-//       <facerecognition />
-//       */}
-//     </div>
-//   );
-// }
-
 export default App;
