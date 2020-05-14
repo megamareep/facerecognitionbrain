@@ -89,7 +89,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input })
-    fetch(`https://protected-escarpment-54369.herokuapp.com/`, {
+    fetch(`https://protected-escarpment-54369.herokuapp.com/imageurl`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -99,7 +99,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch(`https://protected-escarpment-54369.herokuapp.com/`, {
+          fetch(`https://protected-escarpment-54369.herokuapp.com/image`, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -112,7 +112,7 @@ class App extends Component {
             })
             .catch(console.log);
 
-        }
+          }
         this.displayFaceBox(this.calculateFaceLocation(response))
       })
       .catch(console.log);
