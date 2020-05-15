@@ -1,0 +1,1 @@
+export const FETCH_URL = `https://protected-escarpment-54369.herokuapp.com/`;

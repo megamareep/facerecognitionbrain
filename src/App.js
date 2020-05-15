@@ -8,6 +8,7 @@ import Rank from './components/Rank/Rank.js'
 import './App.css';
 import Signin from './components/Signin/Signin.js'
 import Register from './components/Register/Register.js'
+import { FETCH_URL } from './constants.js'
 
 const particlesOptions = {
   particles: {
@@ -89,7 +90,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input })
-    fetch(process.env.FETCH_URL + `imageurl`, {
+    fetch(FETCH_URL + `imageurl`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -99,7 +100,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch(process.env.FETCH_URL + `image`, {
+          fetch(FETCH_URL + `image`, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

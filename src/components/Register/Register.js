@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { FETCH_URL } from '../../constants.js'
 class Register extends Component {
 
     constructor(props) {
@@ -23,7 +23,7 @@ class Register extends Component {
     }
 
     onSubmitRegister = () => {
-        fetch(process.env.FETCH_URL + `register`, {
+        fetch(FETCH_URL + `register`, {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
