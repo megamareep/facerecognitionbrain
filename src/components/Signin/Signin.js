@@ -17,7 +17,7 @@ class Signin extends Component {
     }
 
     onSubmitSignIn = () => {
-        fetch('https://protected-escarpment-54369.herokuapp.com/signin', {
+        fetch(process.env.FETCH_URL + `signin`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
